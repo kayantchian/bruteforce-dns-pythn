@@ -1,0 +1,7 @@
+admin
+ns1
+ns2
+www
+ww2
+ftp
+intranet
