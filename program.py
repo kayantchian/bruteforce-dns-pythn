@@ -7,9 +7,9 @@ class Program():
     def main(self):
         print('\n'
               '        ████▀░░░░░░░░░░░░░░░░░▀████ \n'
-              '        ███│░░==========================░░│███ \n'
-              '        ██▌│░░PROGRAM DEVELOPED BY KAYAN░░│███ \n'
-              '        ██░└┐░==========================░┌┘░██ \n'
+              '        ███│░░===============░░│███ \n'
+              '        ██▌│░PROGRAM DEVELOPED░│███ \n'
+              '        ██░└┐░░==BY KAYAN ==░░┌┘░██ \n'
               '        ██░░└┐░░░░░░░░░░░░░░░┌┘░░██ \n'
               '        ██░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░██ \n'
               '        ██▌░│██████▌░░░▐██████│░▐██ \n'
@@ -41,7 +41,7 @@ class Program():
             dns.dnsbywordlist()
     def tag(self):
         while True:
-            self.tag = input(r"Do you wanna continue? [s\n]: ")
+            self.tag = input("\nDo you wanna continue? [s|n]: ")
             if self.tag.lower() == "n":
                 return exit()
             elif self.tag.lower() == "s":
