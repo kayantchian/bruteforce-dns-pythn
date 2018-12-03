@@ -25,7 +25,7 @@ class Program():
         "[1] Reverse-DNS\n[2] Brute DNS with list default\n[3] DNS Brute-Force with a file\n>> ")
         if self.method not in self.methods:
             print("[!] Method not found!")
-    def run(self):
+    def body(self):
         if self.method == "1":
             dns = Methods()
             dns.host()
@@ -45,11 +45,11 @@ class Program():
             if self.tag.lower() == "n":
                 return exit()
             elif self.tag.lower() == "s":
-                return program.main, program.run()
+                return program.main, program.body()
             else:
                 print("Error.. We not has this option here")
 
 program = Program()
 program.main()
-program.run()
+program.body()
 program.tag()
