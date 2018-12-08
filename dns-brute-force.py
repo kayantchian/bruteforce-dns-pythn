@@ -9,8 +9,7 @@ class Methods(object):
         self.host = ""
         self.method = ''
         self.ports = [80,8080,443,21,25,135,23,11,111,67,13,7,19,17,53]
-        self.socket_object = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+     
     def main(self):
         print('\n'
               '        ████▀░░░░░░░░░░░░░░░░░▀████ \n'
@@ -101,23 +100,18 @@ class Methods(object):
         except FileNotFoundError:
             print("[!] FILE NOT FOUND [!]")
 
-    def port_scanner(self):
+        def port_scanner(self):
         self.host = input("Host: ")
-        if self.host.replace('.', '').isdigit():
-            self.host = socket.gethostbyaddr(self.host)   
-        else:
-            if "www." in self.host:
-                self.host = self.host[4:]
-                pass
-            elif ".com" not in self.host:
-                self.host = self.host + ".com"
-                pass
-        try:
-            for port in self.ports:
-                syn = self.socket_object.connect_ex((self.host,port))
-                if syn == 0:
+        if "www." in self.host:
+            self.host = self.host[4:]
+            pass
+        for port in self.ports:
+            client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            code = client.connect_ex((self.host,port))
+            if code == 0:
+                try:
                     print(f" {port} OPEN")
-                else:
+                except socket.gaierror:
                     pass
         except:
             print("[!} Error! Type just host name")
