@@ -100,7 +100,7 @@ class Methods(object):
         except FileNotFoundError:
             print("[!] FILE NOT FOUND [!]")
 
-        def port_scanner(self):
+            def port_scanner(self):
         self.host = input("Host: ")
         if "www." in self.host:
             self.host = self.host[4:]
@@ -113,8 +113,5 @@ class Methods(object):
                     print(f" {port} OPEN")
                 except socket.gaierror:
                     pass
-        except:
-            print("[!} Error! Type just host name")
-            pass
 dnsbruteforce = Methods()
 dnsbruteforce.main()
