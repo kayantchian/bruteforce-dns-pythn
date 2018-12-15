@@ -1,15 +1,19 @@
+'''
+ Criado por Kayan Tchian
+ Atualização 14/12/2018
+ *Só para testar umas coisinhas aqui...
+'''
 import socket,os,sys
 class Methods(object):
-
     def __init__(self):
         self.filelocation = ""
         self.file = ""
-        self.subdomains = ["ns1", "ns2", "ww2", "www", "admin", "intranet", "ftp"]
+        self.__subdomains = ["ns1", "ns2", "ww2", "www", "admin", "intranet", "ftp"]
         self.subdomainwordlistfile = ''
         self.host = ""
         self.method = ''
-        self.ports = [80,8080,443,21,25,135,23,11,111,67,13,7,19,17,53]
-     
+        self.__ports = [80,8080,443,21,25,135,23,11,111,67,13,7,19,17,53]
+   
     def main(self):
         print('\n'
               '        ████▀░░░░░░░░░░░░░░░░░▀████ \n'
@@ -48,13 +52,11 @@ class Methods(object):
             self.dns_bruteforce_wordlist()
         elif self.method == "3":
             self.port_scanner()
-
     def file_function(self):
         self.filelocation = input("File name: ")
         while self.filelocation[-4:] != '.txt' or os.path.exists(self.filelocation) != True:
             print("[!] Invalid file name: ")
             self.filelocation = input("File name: ")
-
     def host_function(self):
         self.host = input("Host: ")
         try:
@@ -74,9 +76,8 @@ class Methods(object):
         except socket.gaierror:
             print("[!] HOST NOT FOUND OR CORRUPTED HOST")
             sys.exit()
-
     def dns_default_bruteforce(self):
-        for subdomain in self.subdomains:
+        for subdomain in self._Methods__subdomains:
             dns = subdomain + "." + self.host
             try:
                 print(f"{dns} : {socket.gethostbyname(dns)}")
@@ -84,7 +85,6 @@ class Methods(object):
                 pass
             except socket.gaierror:
                 pass
-
     def dns_bruteforce_wordlist(self):
         try:
             self.subdomainwordlistfile = open(self.filelocation, 'r')
@@ -99,13 +99,12 @@ class Methods(object):
                     pass
         except FileNotFoundError:
             print("[!] FILE NOT FOUND [!]")
-
     def port_scanner(self):
         self.host = input("Host: ")
         if "www." in self.host:
             self.host = self.host[4:]
             pass
-        for port in self.ports:
+        for port in self._Methods__ports:
             client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             code = client.connect_ex((self.host,port))
             if code == 0:
