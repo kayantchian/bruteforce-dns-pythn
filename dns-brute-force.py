@@ -6,20 +6,19 @@
 import socket,os,sys
 class Methods(object):
     def __init__(self):
-        self.filelocation = ""
-        self.file = ""
+        self.filelocation = None
+        self.file = None
         self.__subdomains = ["ns1", "ns2", "ww2", "www", "admin", "intranet", "ftp"]
-        self.subdomainwordlistfile = ''
-        self.host = ""
-        self.method = ''
+        self.subdomainwordlistfile = None
+        self.host = None
+        self.method = None
         self.__ports = [80,8080,443,21,25,135,23,11,111,67,13,7,19,17,53]
-   
     def main(self):
         print('\n'
               '        ████▀░░░░░░░░░░░░░░░░░▀████ \n'
-              '        ███│░░===============░░│███ \n'
-              '        ██▌│░PROGRAM DEVELOPED░│███ \n'
-              '        ██░└┐░=== BY KAYAN===░┌┘░██ \n'
+              '        ███│░░==========================░░│███ \n'
+              '        ██▌│░░PROGRAM DEVELOPED BY KAYAN░░│███ \n'
+              '        ██░└┐░==========================░┌┘░██ \n'
               '        ██░░└┐░░░░░░░░░░░░░░░┌┘░░██ \n'
               '        ██░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░██ \n'
               '        ██▌░│██████▌░░░▐██████│░▐██ \n'
@@ -52,6 +51,8 @@ class Methods(object):
             self.dns_bruteforce_wordlist()
         elif self.method == "3":
             self.port_scanner()
+        elif self.method == "4":
+            sys.exit()
     def file_function(self):
         self.filelocation = input("File name: ")
         while self.filelocation[-4:] != '.txt' or os.path.exists(self.filelocation) != True:
