@@ -1,8 +1,3 @@
-'''
- Criado por Kayan Tchian
- Atualização 14/12/2018
- *Só para testar umas coisinhas aqui...
-'''
 import socket,os,sys
 class Methods(object):
     def __init__(self):
